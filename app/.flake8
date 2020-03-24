@@ -1,6 +1,14 @@
 [flake8]
-exclude =
-    migrations,
-    __pycache__,
-    manage.py,
-    settings.py
+ignore = F403
+exclude = 
+    migrations, 
+    __pycache__, 
+    manage.py, 
+    settings.py, 
+    .git, 
+    .gitignore, 
+    .travis.yml, 
+    docker-compose.yml, 
+    Dockerfile, 
+    README.md, 
+    LICENSE
