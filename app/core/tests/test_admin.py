@@ -1,8 +1,8 @@
 from django.test import TestCase, Client
 from django.contrib.auth import get_user_model
 from django.urls import reverse
-
 # write your test case here
+
 
 class AdminSiteTests(TestCase):
     """"""
