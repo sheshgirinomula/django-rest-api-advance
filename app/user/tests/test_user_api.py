@@ -20,7 +20,7 @@ class PublicUserApiTests(TestCase):
     def setUp(self):
         """"""
         self.client = APIClient()
-    
+
     def test_create_valid_user_success(self):
         """Test creating user with vallid payload"""
         payload = {
@@ -33,7 +33,7 @@ class PublicUserApiTests(TestCase):
         user = get_user_model().objects.get(**response.data)
         self.assertTrue(user.check_password(payload['password']))
         self.assertNotIn('password', response.data)
-    
+
     def test_user_exists(self):
         """Testing if user already exists should fail"""
         payload = {
@@ -42,7 +42,7 @@ class PublicUserApiTests(TestCase):
         create_user(**payload)
         response = self.client.post(CREATE_USER_URL, payload)
         self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
-    
+
     def test_password_too_short(self):
         """Testing password length should be more than 5 characters"""
         payload = {
