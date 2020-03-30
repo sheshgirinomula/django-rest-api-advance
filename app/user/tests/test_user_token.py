@@ -7,6 +7,7 @@ from rest_framework import status
 
 
 TOKEN_URL = reverse('user:token')
+PROFILE_URL = reverse('user:profile')
 
 
 def create_user(**params):
@@ -64,3 +65,8 @@ class PublicUserTokenApiTests(TestCase):
         response = self.client.post(TOKEN_URL, payload)
         self.assertNotIn('token', response.data)
         self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
+
+    def test_user_unauthorized(self):
+        """Test the user is authorized"""
+        response = self.client.get(PROFILE_URL)
+        self.assertEqual(response.status_code, status.HTTP_401_UNAUTHORIZED)
